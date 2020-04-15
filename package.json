@@ -2,7 +2,7 @@
   "name": "dropdown-ui",
   "version": "1.0.0",
   "description": "React component library with a single dropdown component",
-  "main": "src/components/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "parcel src/components/index.js",
     "build": "parcel build src/components/index.js"
