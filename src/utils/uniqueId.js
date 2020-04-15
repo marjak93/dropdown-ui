@@ -1,3 +1,9 @@
 import { nanoid } from "nanoid";
 
-export default (prefix) => `${prefix}${nanoid(5)}`;
+/**
+ * Generates a random unique id.
+ * @param {string} prefix String to prefix id with.
+ */
+const uniqueId = (prefix) => `${prefix}${nanoid(5)}`;
+
+export default uniqueId;
