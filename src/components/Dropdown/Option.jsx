@@ -12,7 +12,7 @@ import style from "./style.css";
 const Option = ({
   children,
   value,
-  color,
+  color = "gray",
   textWrap = false,
   handleChange,
   ...props

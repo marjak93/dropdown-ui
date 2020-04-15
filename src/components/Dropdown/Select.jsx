@@ -9,7 +9,7 @@ import style from "./style.css";
  * @param {string} color Color of circle adornment.
  * @param {bool} textWrap Whether button can expand vertically to allow text wrapping. Defaults to false.
  */
-const Button = ({ children, color, textWrap = false, ...props }) => {
+const Button = ({ children, color = "gray", textWrap = false, ...props }) => {
   return (
     <button
       aria-haspopup="listbox"

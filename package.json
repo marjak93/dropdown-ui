@@ -29,5 +29,13 @@
     "rollup": "^2.6.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^2.6.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marjak93/dropdown-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marjak93/dropdown-ui/issues"
+  },
+  "homepage": "https://github.com/marjak93/dropdown-ui#readme"
 }
