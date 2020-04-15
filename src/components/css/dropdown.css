@@ -1,0 +1,102 @@
+.item {
+  background-color: transparent;
+  position: relative;
+  text-align: left;
+}
+
+.item:first-child {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.item:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+
+.item:hover,
+.item:focus {
+  background-color: #eee;
+  cursor: pointer;
+  outline: 0;
+}
+
+.item,
+#button {
+  padding: 10px 42px 8px 42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#button {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  background-color: #fff;
+  position: relative;
+  text-align: left;
+}
+
+.item::before,
+#button::before {
+  width: 16px;
+  height: 16px;
+  background-color: #aaa;
+  content: " ";
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  border-radius: 50%;
+}
+
+#button::after {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #aaa;
+  content: " ";
+  position: absolute;
+  right: 12px;
+  top: 14px;
+}
+
+#button:hover {
+  cursor: pointer;
+}
+
+#label {
+  margin-bottom: 8px;
+}
+
+#list {
+  list-style: none;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0px;
+  margin: 0;
+  margin-top: 1px;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+}
+
+.hidden {
+  display: none;
+}
+
+.green::before {
+  background-color: green !important;
+}
+
+.blue::before {
+  background-color: blue !important;
+}
+
+.yellow::before {
+  background-color: gold !important;
+}
+
+.red::before {
+  background-color: red !important;
+}
