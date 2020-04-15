@@ -49,6 +49,7 @@ const ListBox = ({
 }) => {
   const refs = React.Children.map(children, () => React.useRef());
 
+  // Focus element when focusedIndex changes or listbox opens.
   React.useEffect(() => {
     refs[focusedIndex].current.focus();
   }, [focusedIndex, open]);
@@ -88,6 +89,7 @@ const Select = ({
   placeholder = "Select...",
   onChange,
 }) => {
+  // Return index of first element that has value equal to provided value
   const getActiveIndex = () => {
     return children.findIndex((c) => c.props.value === value);
   };
@@ -99,32 +101,38 @@ const Select = ({
   const [id] = React.useState(() => uniqueId("select-"));
   const [open, setOpen] = React.useState(false);
 
+  // True if no active index
   const unset = activeIndex === -1;
 
+  // Change activeIndex when value changes
   React.useEffect(() => {
     setActiveIndex(getActiveIndex());
   }, [value]);
 
+  // Close listbox
   const handleCloseList = () => {
     setOpen(false);
   };
 
+  // Toggle listbox visibility
   const handleToggleList = () => {
     setOpen(!open);
   };
 
+  // Fire onChange() and close listbox
   const handleChange = (v) => {
     onChange(v);
     handleCloseList();
   };
 
+  // Close list if current focus is outside list
   const handleBlur = (e) => {
-    // Only close list if current focus is outside list
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setOpen(false);
     }
   };
 
+  // Keyboard controls
   const handleKeyDown = (e) => {
     const next = () => setFocusedIndex(mod(focusedIndex + 1, children.length));
     const prev = () => setFocusedIndex(mod(focusedIndex - 1, children.length));

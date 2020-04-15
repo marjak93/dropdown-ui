@@ -17,6 +17,7 @@ const Option = ({
   handleChange,
   ...props
 }) => {
+  // Fire handleChange() with this components value on click
   const handleClick = () => {
     handleChange(value);
   };
