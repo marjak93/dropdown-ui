@@ -16,22 +16,22 @@ const App = () => {
   return (
     <div className={style.container}>
       <h1>Dropdown Demo</h1>
+      <p>Value: {value ? value : "none"}</p>
       <Dropdown.Select
         label="Task status"
         value={value}
-        defaultValue="option2"
         onChange={handleChange}
       >
-        <Dropdown.Option value="option1" id="0" color="green">
+        <Dropdown.Option value="option1" color="green">
           Option 1
         </Dropdown.Option>
-        <Dropdown.Option value="option2" id="1" color="blue">
+        <Dropdown.Option value="option2" color="blue">
           Option 2
         </Dropdown.Option>
-        <Dropdown.Option value="option3" id="2" color="yellow">
+        <Dropdown.Option value="option3" color="yellow">
           Option 3
         </Dropdown.Option>
-        <Dropdown.Option value="option4" id="3" color="red">
+        <Dropdown.Option value="option4" color="red">
           Veldig veldig veldig veldig veldig veldig veldig veldig veldig lang
           option text!! abcewfuoiwenhtpouwe
         </Dropdown.Option>
