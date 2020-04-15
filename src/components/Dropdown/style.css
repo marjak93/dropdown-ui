@@ -4,7 +4,7 @@
   --color-blue: rgba(14, 156, 219, 1);
   --color-orange: rgba(243, 154, 45, 1);
   --color-red: rgba(255, 96, 95, 1);
-  --color-gray: black;
+  --color-gray: gray;
 }
 
 /* Main component wrapper */
