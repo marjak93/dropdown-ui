@@ -284,6 +284,10 @@ const Select = ({
       case "Tab":
         if (e.shiftKey) prev();else next();
         break;
+
+      case "Escape":
+        setOpen(false);
+        break;
     }
   };
 

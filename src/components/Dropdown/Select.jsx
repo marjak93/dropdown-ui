@@ -162,6 +162,9 @@ const Select = ({
         if (e.shiftKey) prev();
         else next();
         break;
+      case "Escape":
+        setOpen(false);
+        break;
       default:
         break;
     }

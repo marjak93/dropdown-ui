@@ -4,7 +4,8 @@
   "description": "React component library with a single dropdown component",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
   "keywords": [],
   "author": "Martin Jakobsen <martinjakobsen93@gmail.com>",
