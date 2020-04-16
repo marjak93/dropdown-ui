@@ -24,12 +24,14 @@ Dropdown has two parts - `Select` and `Option`. The syntax is inspired by the cl
 import { Dropdown } from "@marjak93/dropdown-ui";
 
 const MyDropdown = () => {
-  const handleChange = () => {
-    // Do something here...
+  const [myValue, setMyValue] = React.useState(null);
+
+  const handleChange = (value) => {
+    setMyValue(value);
   };
 
   return (
-    <Dropdown.Select label="Age" onChange={handleChange}>
+    <Dropdown.Select label="Age" value={myValue} onChange={handleChange}>
       <Dropdown.Option value="10">10</Dropdown.Option>
       <Dropdown.Option value="20">20</Dropdown.Option>
       <Dropdown.Option value="30">30</Dropdown.Option>

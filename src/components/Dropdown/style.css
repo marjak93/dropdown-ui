@@ -1,10 +1,11 @@
-/* Color variables. IE11 support through PostCSS. */
+/* CSS variables. IE11 support through PostCSS. */
 :root {
   --color-green: rgba(166, 226, 130, 1);
   --color-blue: rgba(14, 156, 219, 1);
   --color-orange: rgba(243, 154, 45, 1);
   --color-red: rgba(255, 96, 95, 1);
   --color-gray: gray;
+  --width: 240px;
 }
 
 /* Main component wrapper */
@@ -12,6 +13,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 8px 0;
 }
 
 /* Components */
@@ -26,6 +28,8 @@
   position: absolute;
   top: 100%;
   max-width: 100%;
+  min-width: var(--width);
+  z-index: 1000;
 }
 
 .option {
@@ -62,7 +66,7 @@
   background-color: #fff;
   position: relative;
   text-align: left;
-  max-width: 240px;
+  max-width: var(--width);
 }
 
 .option::before,
