@@ -49,9 +49,14 @@ const ListBox = ({
 }) => {
   const refs = React.Children.map(children, () => React.useRef());
 
-  // Focus element when focusedIndex changes or listbox opens.
+  // Focus/blur element when focusedIndex changes or listbox opens/closes.
   React.useEffect(() => {
-    refs[focusedIndex].current.focus();
+    const ref = refs[focusedIndex].current;
+    if (open) {
+      ref.focus();
+    } else {
+      ref.blur();
+    }
   }, [focusedIndex, open]);
 
   return (
@@ -134,6 +139,22 @@ const Select = ({
 
   // Keyboard controls
   const handleKeyDown = (e) => {
+    if (
+      open &&
+      [
+        "ArrowDown",
+        "ArrowUp",
+        "Home",
+        "End",
+        " ",
+        "Enter",
+        "Tab",
+        "Escape",
+      ].includes(e.key)
+    ) {
+      e.preventDefault(); // Prevent default browser interactions
+    }
+
     const next = () => setFocusedIndex(mod(focusedIndex + 1, children.length));
     const prev = () => setFocusedIndex(mod(focusedIndex - 1, children.length));
     const first = () => setFocusedIndex(0);
@@ -157,13 +178,14 @@ const Select = ({
       case " ":
       case "Enter":
         if (open) handleChange(children[focusedIndex].props.value);
+        // else handleOpenList();
         break;
       case "Tab":
         if (e.shiftKey) prev();
         else next();
         break;
       case "Escape":
-        setOpen(false);
+        handleCloseList();
         break;
       default:
         break;
