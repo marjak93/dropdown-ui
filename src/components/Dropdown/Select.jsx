@@ -88,6 +88,7 @@ const ListBox = ({
  * @param {function} onChange Function that is fired when selected option is changed.
  */
 const Select = ({
+  native,
   children,
   label,
   value,
@@ -105,6 +106,15 @@ const Select = ({
   );
   const [id] = React.useState(() => uniqueId("select-"));
   const [open, setOpen] = React.useState(false);
+
+  if (native) {
+    return (
+      <>
+        <label for={`${id}-select`}>{label}</label>
+        <select id={`${id}-select`}>{children}</select>;
+      </>
+    );
+  }
 
   // True if no active index
   const unset = activeIndex === -1;

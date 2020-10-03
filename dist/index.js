@@ -359,7 +359,8 @@ var ListBox = function ListBox(_ref3) {
 
 
 var Select = function Select(_ref4) {
-  var children = _ref4.children,
+  var native = _ref4.native,
+      children = _ref4.children,
       label = _ref4.label,
       value = _ref4.value,
       _ref4$placeholder = _ref4.placeholder,
@@ -393,7 +394,15 @@ var Select = function Select(_ref4) {
   var _React$useState7 = React.useState(false),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
       open = _React$useState8[0],
-      setOpen = _React$useState8[1]; // True if no active index
+      setOpen = _React$useState8[1];
+
+  if (native) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+      for: "".concat(id, "-select")
+    }, label), /*#__PURE__*/React.createElement("select", {
+      id: "".concat(id, "-select")
+    }, children), ";");
+  } // True if no active index
 
 
   var unset = activeIndex === -1; // Change activeIndex when value changes
