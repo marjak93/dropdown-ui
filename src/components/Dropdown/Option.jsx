@@ -10,6 +10,7 @@ import style from "./style.css";
  * @param {function} handleChange Function to be fired when clicked.
  */
 const Option = ({
+  native,
   children,
   value,
   color = "gray",
@@ -17,6 +18,10 @@ const Option = ({
   handleChange,
   ...props
 }) => {
+  if (native) {
+    return <option value={value}>{children}</option>;
+  }
+
   // Fire handleChange() with this components value on click
   const handleClick = () => {
     handleChange(value);
