@@ -18,14 +18,14 @@ const Option = ({
   handleChange,
   ...props
 }) => {
-  if (native) {
-    return <option value={value}>{children}</option>;
-  }
-
   // Fire handleChange() with this components value on click
   const handleClick = () => {
     handleChange(value);
   };
+
+  if (native) {
+    return <option value={value}>{children}</option>;
+  }
 
   return (
     <li

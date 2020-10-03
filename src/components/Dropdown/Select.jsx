@@ -107,18 +107,6 @@ const Select = ({
   const [id] = React.useState(() => uniqueId("select-"));
   const [open, setOpen] = React.useState(false);
 
-  if (native) {
-    return (
-      <>
-        <label for={`${id}-select`}>{label}</label>
-        <select id={`${id}-select`}>
-          {React.Children.map((c) => React.cloneElement(c, { native: true }))}
-        </select>
-        ;
-      </>
-    );
-  }
-
   // True if no active index
   const unset = activeIndex === -1;
 
@@ -204,6 +192,22 @@ const Select = ({
         break;
     }
   };
+
+  if (native) {
+    return (
+      <>
+        <label htmlFor={`${id}-select`}>{label}</label>
+        <select
+          id={`${id}-select`}
+          onChange={(e) => handleChange(e.target.value)}
+        >
+          {React.Children.map(children, (c) =>
+            React.cloneElement(c, { native: true })
+          )}
+        </select>
+      </>
+    );
+  }
 
   return (
     <div
