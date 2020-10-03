@@ -401,7 +401,11 @@ var Select = function Select(_ref4) {
       for: "".concat(id, "-select")
     }, label), /*#__PURE__*/React.createElement("select", {
       id: "".concat(id, "-select")
-    }, children), ";");
+    }, React.Children.map(function (c) {
+      return React.cloneElement(c, {
+        native: true
+      });
+    })), ";");
   } // True if no active index
 
 
@@ -522,16 +526,23 @@ var Select = function Select(_ref4) {
  */
 
 var Option = function Option(_ref) {
-  var children = _ref.children,
+  var native = _ref.native,
+      children = _ref.children,
       value = _ref.value,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? "gray" : _ref$color,
       _ref$textWrap = _ref.textWrap,
       textWrap = _ref$textWrap === void 0 ? false : _ref$textWrap,
       handleChange = _ref.handleChange,
-      props = _objectWithoutProperties(_ref, ["children", "value", "color", "textWrap", "handleChange"]);
+      props = _objectWithoutProperties(_ref, ["native", "children", "value", "color", "textWrap", "handleChange"]);
 
-  // Fire handleChange() with this components value on click
+  if (native) {
+    return /*#__PURE__*/React.createElement("option", {
+      value: value
+    }, children);
+  } // Fire handleChange() with this components value on click
+
+
   var handleClick = function handleClick() {
     handleChange(value);
   };

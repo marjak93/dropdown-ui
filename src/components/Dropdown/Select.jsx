@@ -111,7 +111,10 @@ const Select = ({
     return (
       <>
         <label for={`${id}-select`}>{label}</label>
-        <select id={`${id}-select`}>{children}</select>;
+        <select id={`${id}-select`}>
+          {React.Children.map((c) => React.cloneElement(c, { native: true }))}
+        </select>
+        ;
       </>
     );
   }
