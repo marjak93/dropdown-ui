@@ -394,19 +394,7 @@ var Select = function Select(_ref4) {
   var _React$useState7 = React.useState(false),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
       open = _React$useState8[0],
-      setOpen = _React$useState8[1];
-
-  if (native) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
-      for: "".concat(id, "-select")
-    }, label), /*#__PURE__*/React.createElement("select", {
-      id: "".concat(id, "-select")
-    }, React.Children.map(function (c) {
-      return React.cloneElement(c, {
-        native: true
-      });
-    })), ";");
-  } // True if no active index
+      setOpen = _React$useState8[1]; // True if no active index
 
 
   var unset = activeIndex === -1; // Change activeIndex when value changes
@@ -494,6 +482,21 @@ var Select = function Select(_ref4) {
     }
   };
 
+  if (native) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "".concat(id, "-select")
+    }, label), /*#__PURE__*/React.createElement("select", {
+      id: "".concat(id, "-select"),
+      onChange: function onChange(e) {
+        return handleChange(e.target.value);
+      }
+    }, React.Children.map(children, function (c) {
+      return React.cloneElement(c, {
+        native: true
+      });
+    })));
+  }
+
   return /*#__PURE__*/React.createElement("div", {
     className: style.wrapper,
     onKeyDown: handleKeyDown,
@@ -536,16 +539,16 @@ var Option = function Option(_ref) {
       handleChange = _ref.handleChange,
       props = _objectWithoutProperties(_ref, ["native", "children", "value", "color", "textWrap", "handleChange"]);
 
+  // Fire handleChange() with this components value on click
+  var handleClick = function handleClick() {
+    handleChange(value);
+  };
+
   if (native) {
     return /*#__PURE__*/React.createElement("option", {
       value: value
     }, children);
-  } // Fire handleChange() with this components value on click
-
-
-  var handleClick = function handleClick() {
-    handleChange(value);
-  };
+  }
 
   return /*#__PURE__*/React.createElement("li", _extends({
     role: "option",
